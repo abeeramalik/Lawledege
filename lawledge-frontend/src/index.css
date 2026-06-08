@@ -1,25 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap');
 @import "tailwindcss";
 
-/* =========================
-   BASE RESET
-========================= */
+/* =========================================================
+   PRODUCTION SYSTEM BASE OVERRIDES (Prevents Vercel Layout Bloat)
+========================================================= */
 
-html, body, #root {
-  height: 100%;
-  width: 100%;
-}
-
-*, *::before, *::after {
+html[class], :root {
+  font-size: 16px !important; 
+  -webkit-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
   box-sizing: border-box;
 }
 
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* Fixes browser-level zooming miscalculations across Safari/Chrome */
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
+body[class] {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  max-width: 100vw;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+  font-size: 15px !important; /* Shrunk slightly below standard to break layout inflation safely */
+  line-height: 1.5 !important;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+#root[class] {
+  width: 100%;
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 /* REMOVE DEFAULT LINK STYLING */
@@ -29,9 +43,8 @@ a {
 }
 
 /* =========================
-   THEME VARIABLES (DEFAULT = LIGHT)
+   THEME VARIABLES
 ========================= */
-
 :root {
   --bg: #F5F0EA;
   --text: #3D2314;
@@ -50,7 +63,6 @@ a {
   --rainbow-h: linear-gradient(90deg, #ff0080, #ff8c00, #ffd700, #00c851, #00bcd4, #7b2ff7);
 }
 
-/* DARK MODE */
 [data-theme="dark"] {
   --bg: #0b1220;
   --text: #e2e8f0;
@@ -61,53 +73,25 @@ a {
 }
 
 /* =========================
-   GLOBAL BODY (ONLY ONCE)
-========================= */
-
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-
-  background: var(--bg);
-  color: var(--text);
-
-  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-  font-size: 16px; /* Normalized from 17px to fix browser zoom layout explosions */
-  line-height: 1.5;
-
-  transition: background 0.25s ease, color 0.25s ease;
-}
-
-/* =========================
    SHARED UI COMPONENTS
 ========================= */
-
 .card {
   background: var(--card);
   border: 1px solid var(--border);
   transition: background 0.25s ease, border 0.25s ease;
 }
 
-/* OPTIONAL: nicer scroll */
 ::-webkit-scrollbar {
   width: 8px;
 }
-
 ::-webkit-scrollbar-thumb {
   background: var(--border);
   border-radius: 8px;
 }
 
 /* =========================
-   LAWLEDGE SHARED ACTION BUTTONS + LOGIN FIXES
+   LAWLEDGE ACTIONS + FIXES
 ========================= */
-@keyframes rainbow-anim {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 .btn-rainbow {
   display: block;
   width: 100%;
@@ -116,9 +100,9 @@ body {
   color: #fff !important;
   border: none;
   border-radius: 16px;
-  padding: 12px 24px; /* Slightly compacted padding down from 15px */
+  padding: 12px 24px;
   font-weight: 800;
-  font-size: 16px; /* Scaled down from 17px */
+  font-size: 15px;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
   font-family: 'Poppins', sans-serif;
@@ -139,9 +123,9 @@ body {
   border: 2px solid #3D2314;
   color: #3D2314 !important;
   border-radius: 16px;
-  padding: 11px 22px; /* Slightly adjusted structural padding */
+  padding: 11px 22px;
   font-weight: 800;
-  font-size: 15px; /* Normalized from 16px */
+  font-size: 14px;
   cursor: pointer;
   transition: transform 0.15s ease, background-color 0.15s ease;
   font-family: 'Poppins', sans-serif;

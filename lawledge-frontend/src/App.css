@@ -1,37 +1,24 @@
-/* Main Layout */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+/* =========================================================
+   LAYOUT SPECIFICITY PROTECTION (Fixes Vercel Sidebar & Workspace Scale)
+========================================================= */
 
-body,
-html {
-  width: 100%;
-  min-height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-/* App Container */
-.app-container {
+.app-container[class] {
   display: flex;
   flex-direction: row;
-  /* Desktop Sidebar Layout */
   min-height: 100vh;
+  max-width: 100vw;
   background: transparent;
 }
 
-/* Sidebar Navigation */
-.navbar {
-  width: 280px; /* Reduced from 426px to prevent layout bloating */
+.navbar[class] {
+  width: 260px !important; /* Shrunk slightly more to ensure safety on low-res screens */
   height: 100vh;
   background: #ffffff;
   border-right: 2.5px solid #704214;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding: 1.5rem 1.25rem;
+  padding: 1.25rem 1rem;
   flex-shrink: 0;
   position: sticky;
   top: 0;
@@ -41,7 +28,6 @@ html {
   transition: background 0.3s, border-color 0.3s;
 }
 
-/* High Viz Sidebar support */
 .high-viz .navbar {
   background: #000 !important;
   border-right: 2.5px solid var(--high-viz-yellow) !important;
@@ -49,13 +35,13 @@ html {
 }
 
 .nav-logo {
-  margin-bottom: 2.25rem;
-  padding-top: 0.5rem;
+  margin-bottom: 2rem;
+  padding-top: 0.25rem;
 }
 
 .nav-logo h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
+  font-size: 1.9rem;
   font-weight: 900;
   letter-spacing: -0.05em;
   background: linear-gradient(135deg, #3D2314, #704214);
@@ -69,78 +55,51 @@ html {
   display: block;
   margin-top: 0.2rem;
   font-family: Arial, sans-serif;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 950;
-  letter-spacing: 0.02em;
   color: #704214;
-  text-shadow: 0 6px 18px rgba(94, 53, 177, 0.18);
-  font-variant: all-small-caps;
 }
 
 .navbar a {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  font-size: 1.05rem;
+  gap: 0.75rem;
+  font-size: 0.95rem;
   font-weight: 800;
   color: #3D2314;
   text-decoration: none;
-  padding: 0.85rem 1.15rem;
-  margin: 0.25rem 0;
-  border-radius: 1.5rem;
-  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
-    box-shadow 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
-    background 0.25s ease,
-    color 0.25s ease,
-    border-color 0.25s ease;
+  padding: 0.75rem 1rem;
+  margin: 0.2rem 0;
+  border-radius: 1.25rem;
+  transition: all 0.25s ease;
   border: 2px solid transparent;
 }
 
-/* Align and color icon inside the navbar link */
 .navbar a .link-icon-align {
   display: flex;
   align-items: center;
   justify-content: center;
   color: #D97706;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.25s ease;
   flex-shrink: 0;
 }
 
-/* Hover Floating Effect with Dynamic Color Shift */
 .navbar a:hover {
-  transform: translateY(-3px) translateX(6px) scale(1.02);
-  box-shadow: 0 8px 20px rgba(61, 35, 20, 0.08);
-  background: linear-gradient(135deg, rgba(217, 119, 6, 0.08) 0%, rgba(233, 30, 99, 0.04) 100%);
-  border-color: rgba(112, 66, 20, 0.2);
-  color: #704214;
+  transform: translateY(-2px) translateX(4px);
+  background: rgba(217, 119, 6, 0.06);
+  border-color: rgba(112, 66, 20, 0.15);
 }
 
-.navbar a:hover .link-icon-align {
-  transform: scale(1.2) rotate(8deg);
-  color: #D97706;
-}
-
-/* Premium Gradient Active State */
 .navbar a.active {
   background: linear-gradient(135deg, #3D2314 0%, #704214 100%) !important;
   color: #ffffff !important;
-  box-shadow: 0 8px 24px rgba(61, 35, 20, 0.3);
-  border-color: transparent;
-  transform: translateY(-2px) translateX(5px);
+  transform: translateX(4px);
 }
 
 .navbar a.active .link-icon-align {
   color: #ffffff !important;
-  transform: scale(1.1);
 }
 
-.high-viz .navbar a.active {
-  background: var(--high-viz-yellow) !important;
-  color: #000 !important;
-}
-
-/* Content Wrapper */
-.main-wrapper {
+.main-wrapper[class] {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -148,29 +107,27 @@ html {
   min-width: 0;
 }
 
-.content {
-  padding: 2.5rem;
+.content[class] {
+  padding: 2rem;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1280px; /* Reduced content envelope spacing maximums */
   margin: 0 auto;
-  /* Extra bottom padding for the Mobile Dock */
   padding-bottom: 140px;
 }
 
-/* Responsive Breakpoints */
+/* Responsive Media Controls */
 @media (max-width: 1024px) {
-  .navbar {
-    width: 240px;
+  .navbar[class] {
+    width: 220px !important;
   }
 }
 
 @media (max-width: 768px) {
-  .app-container {
+  .app-container[class] {
     flex-direction: column;
   }
-
-  .navbar {
-    width: 100%;
+  .navbar[class] {
+    width: 100% !important;
     height: auto;
     position: relative;
     flex-direction: row;
@@ -179,110 +136,35 @@ html {
     border-right: none;
     border-bottom: 2.5px solid #704214;
   }
-
-  .navbar a {
-    font-size: 0.9rem;
-    padding: 0.6rem 1rem;
-  }
-
-  .content {
-    padding: 1.5rem 1rem 120px;
+  .content[class] {
+    padding: 1.25rem 1rem 120px;
   }
 }
 
-/* Reset baseline scaling to standardized web values */
-.lawledge-module-shell {
-  font-size: 16px; /* Normalized from 18px */
-  line-height: 1.6;
+/* Modular Scaling Normalization Block */
+.lawledge-module-shell[class] {
+  font-size: 15px !important;
+  line-height: 1.55;
 }
 
-.lawledge-module-shell * {
-  font-family: 'Poppins', system-ui, sans-serif;
-}
-
-.lawledge-module-shell h1 {
-  font-size: clamp(2rem, 4vw, 3.2rem) !important;
-  line-height: 1.1;
-}
-
-.lawledge-module-shell h2 {
-  font-size: clamp(1.6rem, 3vw, 2.2rem) !important;
-  line-height: 1.15;
-}
-
-.lawledge-module-shell h3 {
-  font-size: clamp(1.2rem, 2vw, 1.5rem) !important;
-  line-height: 1.25;
-}
-
-.lawledge-module-shell h4 {
-  font-size: 1.1rem !important;
-}
-
+.lawledge-module-shell h1 { font-size: 2.2rem !important; }
+.lawledge-module-shell h2 { font-size: 1.75rem !important; }
+.lawledge-module-shell h3 { font-size: 1.35rem !important; }
 .lawledge-module-shell p,
 .lawledge-module-shell li,
 .lawledge-module-shell input,
-.lawledge-module-shell textarea,
-.lawledge-module-shell select,
-.lawledge-module-shell button,
 .lawledge-module-shell span {
-  font-size: 1rem; /* Standardized text scale */
+  font-size: 0.95rem !important;
 }
 
-/* Tailwind custom over-adjustments reset to reasonable steps */
-.lawledge-module-shell .text-\[9px\] {
-  font-size: 0.75rem !important;
-}
+/* Tailwind Standard Classes Structural Resets */
+.lawledge-module-shell .text-xs { font-size: 0.75rem !important; }
+.lawledge-module-shell .text-sm { font-size: 0.85rem !important; }
+.lawledge-module-shell .text-base { font-size: 0.95rem !important; }
+.lawledge-module-shell .text-lg { font-size: 1.1rem !important; }
+.lawledge-module-shell .text-xl { font-size: 1.25rem !important; }
+.lawledge-module-shell .text-2xl { font-size: 1.45rem !important; }
 
-.lawledge-module-shell .text-\[10px\] {
-  font-size: 0.8rem !important;
-}
-
-.lawledge-module-shell .text-\[11px\] {
-  font-size: 0.85rem !important;
-}
-
-.lawledge-module-shell .text-\[12px\] {
-  font-size: 0.875rem !important;
-}
-
-.lawledge-module-shell .text-xs {
-  font-size: 0.75rem !important;
-}
-
-.lawledge-module-shell .text-sm {
-  font-size: 0.875rem !important;
-}
-
-.lawledge-module-shell .text-base {
-  font-size: 1rem !important;
-}
-
-.lawledge-module-shell .text-lg {
-  font-size: 1.125rem !important;
-}
-
-.lawledge-module-shell .text-xl {
-  font-size: 1.25rem !important;
-}
-
-.lawledge-module-shell .text-2xl {
-  font-size: 1.5rem !important;
-}
-
-/* Justice Hub bottom menu placement shifted left dynamically to match sidebar updates */
-.justice-bottom-nav {
-  left: 280px; 
-}
-
-@media (max-width: 1024px) {
-  .justice-bottom-nav {
-    left: 240px;
-  }
-}
-
-@media (max-width: 768px) {
-  .justice-bottom-nav {
-    left: 0;
-  }
-}
+.justice-bottom-nav[class] { left: 260px; }
+@media (max-width: 1024px) { .justice-bottom-nav[class] { left: 220px; } }
+@media (max-width: 768px) { .justice-bottom-nav[class] { left: 0; } }
