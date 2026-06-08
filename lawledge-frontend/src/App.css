@@ -24,7 +24,7 @@ html {
 
 /* Sidebar Navigation */
 .navbar {
-  width: 426px;
+  width: 280px; /* Reduced from 426px to prevent layout bloating */
   height: 100vh;
   background: #ffffff;
   border-right: 2.5px solid #704214;
@@ -81,12 +81,11 @@ html {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 800;
   color: #3D2314;
-  /* Slate-600 */
   text-decoration: none;
-  padding: 0.85rem 1.35rem;
+  padding: 0.85rem 1.15rem;
   margin: 0.25rem 0;
   border-radius: 1.5rem;
   transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
@@ -103,7 +102,6 @@ html {
   align-items: center;
   justify-content: center;
   color: #D97706;
-  /* vibrant deep purple icon */
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.25s ease;
   flex-shrink: 0;
 }
@@ -120,7 +118,6 @@ html {
 .navbar a:hover .link-icon-align {
   transform: scale(1.2) rotate(8deg);
   color: #D97706;
-  /* Shifts icon to dynamic hot pink on hover! */
 }
 
 /* Premium Gradient Active State */
@@ -163,7 +160,7 @@ html {
 /* Responsive Breakpoints */
 @media (max-width: 1024px) {
   .navbar {
-    width: 300px;
+    width: 240px;
   }
 }
 
@@ -193,10 +190,10 @@ html {
   }
 }
 
-/* Integrated module pages should visually match the main Lawledge app scale. */
+/* Reset baseline scaling to standardized web values */
 .lawledge-module-shell {
-  font-size: 18px;
-  line-height: 1.65;
+  font-size: 16px; /* Normalized from 18px */
+  line-height: 1.6;
 }
 
 .lawledge-module-shell * {
@@ -204,22 +201,22 @@ html {
 }
 
 .lawledge-module-shell h1 {
-  font-size: clamp(2.35rem, 4.4vw, 3.75rem) !important;
-  line-height: 1.08;
+  font-size: clamp(2rem, 4vw, 3.2rem) !important;
+  line-height: 1.1;
 }
 
 .lawledge-module-shell h2 {
-  font-size: clamp(1.8rem, 3.3vw, 2.55rem) !important;
-  line-height: 1.14;
+  font-size: clamp(1.6rem, 3vw, 2.2rem) !important;
+  line-height: 1.15;
 }
 
 .lawledge-module-shell h3 {
-  font-size: clamp(1.35rem, 2.2vw, 1.75rem) !important;
-  line-height: 1.22;
+  font-size: clamp(1.2rem, 2vw, 1.5rem) !important;
+  line-height: 1.25;
 }
 
 .lawledge-module-shell h4 {
-  font-size: 1.2rem !important;
+  font-size: 1.1rem !important;
 }
 
 .lawledge-module-shell p,
@@ -229,57 +226,58 @@ html {
 .lawledge-module-shell select,
 .lawledge-module-shell button,
 .lawledge-module-shell span {
-  font-size: 1.06rem;
+  font-size: 1rem; /* Standardized text scale */
 }
 
+/* Tailwind custom over-adjustments reset to reasonable steps */
 .lawledge-module-shell .text-\[9px\] {
-  font-size: 0.84rem !important;
+  font-size: 0.75rem !important;
 }
 
 .lawledge-module-shell .text-\[10px\] {
-  font-size: 0.86rem !important;
+  font-size: 0.8rem !important;
 }
 
 .lawledge-module-shell .text-\[11px\] {
-  font-size: 0.9rem !important;
+  font-size: 0.85rem !important;
 }
 
 .lawledge-module-shell .text-\[12px\] {
-  font-size: 0.95rem !important;
+  font-size: 0.875rem !important;
 }
 
 .lawledge-module-shell .text-xs {
-  font-size: 0.96rem !important;
+  font-size: 0.75rem !important;
 }
 
 .lawledge-module-shell .text-sm {
-  font-size: 1.04rem !important;
+  font-size: 0.875rem !important;
 }
 
 .lawledge-module-shell .text-base {
-  font-size: 1.1rem !important;
+  font-size: 1rem !important;
 }
 
 .lawledge-module-shell .text-lg {
-  font-size: 1.22rem !important;
+  font-size: 1.125rem !important;
 }
 
 .lawledge-module-shell .text-xl {
-  font-size: 1.42rem !important;
+  font-size: 1.25rem !important;
 }
 
 .lawledge-module-shell .text-2xl {
-  font-size: 1.72rem !important;
+  font-size: 1.5rem !important;
 }
 
-/* Justice Hub bottom menu stays inside the main page area, not under the left sidebar. */
+/* Justice Hub bottom menu placement shifted left dynamically to match sidebar updates */
 .justice-bottom-nav {
-  left: 426px;
+  left: 280px; 
 }
 
 @media (max-width: 1024px) {
   .justice-bottom-nav {
-    left: 300px;
+    left: 240px;
   }
 }
 
