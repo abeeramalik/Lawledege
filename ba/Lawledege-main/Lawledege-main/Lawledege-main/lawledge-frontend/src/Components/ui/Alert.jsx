@@ -1,0 +1,6 @@
+import React from "react";
+import "./Alert.css";
+
+export default function Alert({ type = "info", message }) {
+  return <div className={`alert ${type}`}>{message}</div>;
+}

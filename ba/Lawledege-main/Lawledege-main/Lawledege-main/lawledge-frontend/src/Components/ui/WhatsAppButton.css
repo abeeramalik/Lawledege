@@ -1,0 +1,31 @@
+/* WhatsApp Interaction */
+.wa-btn { 
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.5rem;
+  background: #16a34a;
+
+  color: white;
+  font-weight: 800;
+  font-size: 0.97rem;
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  box-shadow: 0 6px 22px rgba(37,211,102,0.3);
+  transition: all .25s var(--ease);
+}
+.wa-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(22,163,74,0.4); background:#15803d; }
+
+/* Remove any potential “success dot” indicator shown next to the button */
+.wa-btn::after,
+.wa-btn::before,
+.wa-btn .dot,
+.wa-btn .notification-dot,
+.wa-btn + .dot,
+.wa-btn + .notification-dot {
+  display: none !important;
+  content: none !important;
+}
+
+.wa-btn svg { width: 20px; height: 20px; }

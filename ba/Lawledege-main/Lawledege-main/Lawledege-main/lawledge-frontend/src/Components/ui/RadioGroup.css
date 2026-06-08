@@ -1,0 +1,14 @@
+.radio-group { display: flex; flex-direction: column; gap: 0.7rem; }
+.radio-option {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.85rem 1.25rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all .2s var(--ease);
+  background: rgba(255,255,255,0.8);
+}
+.radio-option:hover { border-color: var(--lavender-mid); background: var(--lavender); }
+.radio-option input[type="radio"] { accent-color: var(--lavender-deep); width: 1.1rem; height: 1.1rem; }
+.radio-option.selected { border-color: var(--lavender-deep); background: var(--lavender); }
+.radio-label { font-weight: 700; color: var(--text-primary); font-size: 0.97rem; }

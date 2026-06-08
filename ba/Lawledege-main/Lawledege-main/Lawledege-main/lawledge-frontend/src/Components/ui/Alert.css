@@ -1,0 +1,3 @@
+/* Alert — see global definition in index.css */
+.alert { font-size: 0.97rem; }
+.alert::before { content: attr(data-icon); font-size: 1.15rem; }

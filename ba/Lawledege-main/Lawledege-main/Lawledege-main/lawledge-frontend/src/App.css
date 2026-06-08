@@ -1,0 +1,290 @@
+/* Main Layout */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* App Container */
+.app-container {
+  display: flex;
+  flex-direction: row;
+  /* Desktop Sidebar Layout */
+  min-height: 100vh;
+  background: transparent;
+}
+
+/* Sidebar Navigation */
+.navbar {
+  width: 426px;
+  height: 100vh;
+  background: #ffffff;
+  border-right: 2.5px solid #704214;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 1.5rem 1.25rem;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 8px 24px rgba(61, 35, 20, 0.1);
+  overflow-y: auto;
+  z-index: 100;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+/* High Viz Sidebar support */
+.high-viz .navbar {
+  background: #000 !important;
+  border-right: 2.5px solid var(--high-viz-yellow) !important;
+  box-shadow: none;
+}
+
+.nav-logo {
+  margin-bottom: 2.25rem;
+  padding-top: 0.5rem;
+}
+
+.nav-logo h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  background: linear-gradient(135deg, #3D2314, #704214);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+
+.nav-logo span {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: Arial, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 950;
+  letter-spacing: 0.02em;
+  color: #704214;
+  text-shadow: 0 6px 18px rgba(94, 53, 177, 0.18);
+  font-variant: all-small-caps;
+}
+
+.navbar a {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #3D2314;
+  /* Slate-600 */
+  text-decoration: none;
+  padding: 0.85rem 1.35rem;
+  margin: 0.25rem 0;
+  border-radius: 1.5rem;
+  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
+    box-shadow 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+  border: 2px solid transparent;
+}
+
+/* Align and color icon inside the navbar link */
+.navbar a .link-icon-align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #D97706;
+  /* vibrant deep purple icon */
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.25s ease;
+  flex-shrink: 0;
+}
+
+/* Hover Floating Effect with Dynamic Color Shift */
+.navbar a:hover {
+  transform: translateY(-3px) translateX(6px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(61, 35, 20, 0.08);
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.08) 0%, rgba(233, 30, 99, 0.04) 100%);
+  border-color: rgba(112, 66, 20, 0.2);
+  color: #704214;
+}
+
+.navbar a:hover .link-icon-align {
+  transform: scale(1.2) rotate(8deg);
+  color: #D97706;
+  /* Shifts icon to dynamic hot pink on hover! */
+}
+
+/* Premium Gradient Active State */
+.navbar a.active {
+  background: linear-gradient(135deg, #3D2314 0%, #704214 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 24px rgba(61, 35, 20, 0.3);
+  border-color: transparent;
+  transform: translateY(-2px) translateX(5px);
+}
+
+.navbar a.active .link-icon-align {
+  color: #ffffff !important;
+  transform: scale(1.1);
+}
+
+.high-viz .navbar a.active {
+  background: var(--high-viz-yellow) !important;
+  color: #000 !important;
+}
+
+/* Content Wrapper */
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  min-width: 0;
+}
+
+.content {
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  /* Extra bottom padding for the Mobile Dock */
+  padding-bottom: 140px;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .navbar {
+    width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .navbar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1rem;
+    border-right: none;
+    border-bottom: 2.5px solid #704214;
+  }
+
+  .navbar a {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .content {
+    padding: 1.5rem 1rem 120px;
+  }
+}
+
+/* Integrated module pages should visually match the main Lawledge app scale. */
+.lawledge-module-shell {
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.lawledge-module-shell * {
+  font-family: 'Poppins', system-ui, sans-serif;
+}
+
+.lawledge-module-shell h1 {
+  font-size: clamp(2.35rem, 4.4vw, 3.75rem) !important;
+  line-height: 1.08;
+}
+
+.lawledge-module-shell h2 {
+  font-size: clamp(1.8rem, 3.3vw, 2.55rem) !important;
+  line-height: 1.14;
+}
+
+.lawledge-module-shell h3 {
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem) !important;
+  line-height: 1.22;
+}
+
+.lawledge-module-shell h4 {
+  font-size: 1.2rem !important;
+}
+
+.lawledge-module-shell p,
+.lawledge-module-shell li,
+.lawledge-module-shell input,
+.lawledge-module-shell textarea,
+.lawledge-module-shell select,
+.lawledge-module-shell button,
+.lawledge-module-shell span {
+  font-size: 1.06rem;
+}
+
+.lawledge-module-shell .text-\[9px\] {
+  font-size: 0.84rem !important;
+}
+
+.lawledge-module-shell .text-\[10px\] {
+  font-size: 0.86rem !important;
+}
+
+.lawledge-module-shell .text-\[11px\] {
+  font-size: 0.9rem !important;
+}
+
+.lawledge-module-shell .text-\[12px\] {
+  font-size: 0.95rem !important;
+}
+
+.lawledge-module-shell .text-xs {
+  font-size: 0.96rem !important;
+}
+
+.lawledge-module-shell .text-sm {
+  font-size: 1.04rem !important;
+}
+
+.lawledge-module-shell .text-base {
+  font-size: 1.1rem !important;
+}
+
+.lawledge-module-shell .text-lg {
+  font-size: 1.22rem !important;
+}
+
+.lawledge-module-shell .text-xl {
+  font-size: 1.42rem !important;
+}
+
+.lawledge-module-shell .text-2xl {
+  font-size: 1.72rem !important;
+}
+
+/* Justice Hub bottom menu stays inside the main page area, not under the left sidebar. */
+.justice-bottom-nav {
+  left: 426px;
+}
+
+@media (max-width: 1024px) {
+  .justice-bottom-nav {
+    left: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .justice-bottom-nav {
+    left: 0;
+  }
+}

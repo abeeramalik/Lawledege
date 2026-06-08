@@ -1,0 +1,63 @@
+/* Directory Page */
+.directory-page {
+  padding-bottom: 3rem;
+}
+
+.directory-title {
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #3D2314, #704214);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.8rem;
+}
+
+.directory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2.25rem;
+  margin-top: 2.5rem;
+}
+
+.directory-card {
+  background: #F5F0EA;
+  border: 2px solid rgba(112, 66, 20, 0.25);
+  border-radius: 2rem;
+  padding: 2.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform .3s var(--ease), box-shadow .3s, border-color .3s;
+  backdrop-filter: blur(8px);
+  position: relative;
+  overflow: hidden;
+}
+
+.directory-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3D2314, #D97706);
+}
+
+.directory-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+  border-color: #704214;
+}
+
+.directory-card h3 {
+  font-size: 1.55rem;
+  font-weight: 900;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.directory-card p {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  line-height: 1.75;
+  font-weight: 500;
+}

@@ -1,0 +1,156 @@
+/* Leaderboard Styles */
+.leaderboard-page {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px 3rem;
+}
+
+/* Heading */
+.leaderboard-title {
+  font-family: Arial, sans-serif !important;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 950;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  background: none !important;
+  margin-bottom: 0.4rem;
+}
+
+.leaderboard-sub {
+  color: rgba(15, 23, 42, 0.65);
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+  font-weight: 650;
+  font-family: Arial, sans-serif;
+}
+
+/* Trophy Banner */
+.leaderboard-banner {
+  background: linear-gradient(135deg, #312e81 0%, #4338ca 60%, #3730a3 100%);
+  border-radius: 2rem;
+  padding: 2.5rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(67, 56, 202, 0.4);
+}
+.leaderboard-banner::before {
+  content: '';
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.07);
+}
+.leaderboard-banner::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: 10%;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+}
+.leaderboard-banner .trophy-icon { font-size: 3.5rem; display: block; margin-bottom: 0.5rem; position: relative; z-index: 1; }
+.leaderboard-banner h2 {
+  font-family: Arial, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: white;
+  margin: 0;
+  position: relative; z-index: 1;
+}
+.leaderboard-banner p { color: rgba(255,255,255,0.82); font-size: 1rem; margin: 0.4rem 0 0; position: relative; z-index: 1; }
+
+/* ── Table Card ── */
+.leaderboard-table-card {
+  background: white;
+  border-radius: 2rem;
+  border: 2px solid #e5e7eb;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  overflow: hidden;
+}
+
+.leaderboard-table-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.leaderboard-table-card thead {
+  background: #f1f5f9;
+  border-bottom: 2.5px solid #cbd5e1;
+}
+.leaderboard-table-card thead th {
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #374151;
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+}
+
+/* Row Theming */
+.lb-row {
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.lb-row:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  filter: brightness(0.97);
+}
+
+/* Distinct soft single-hue tints — dusty rose, sage, periwinkle, sand, seafoam, lavender */
+.lb-row:nth-child(6n+1) { background: #fdf2f8; }
+.lb-row:nth-child(6n+2) { background: #f0fdf4; }
+.lb-row:nth-child(6n+3) { background: #eff6ff; }
+.lb-row:nth-child(6n+4) { background: #fffbeb; }
+.lb-row:nth-child(6n+5) { background: #f0fdfa; }
+.lb-row:nth-child(6n+6) { background: #f5f3ff; }
+
+.lb-row td {
+  font-family: Arial, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 1.1rem 1.5rem;
+  color: #1e293b;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Rank badges */
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem; height: 2.4rem;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: 900;
+  font-family: Arial, sans-serif;
+}
+.rank-badge.gold   { background: #fbbf24; color: #78350f; box-shadow: 0 3px 10px rgba(251,191,36,0.4); }
+.rank-badge.silver { background: #94a3b8; color: #1e293b; box-shadow: 0 3px 10px rgba(148,163,184,0.4); }
+.rank-badge.bronze { background: #c2824a; color: white; box-shadow: 0 3px 10px rgba(194,130,74,0.4); }
+.rank-badge.other  { background: #e2e8f0; color: #475569; }
+
+/* Dept name with icon */
+.dept-cell { display: flex; align-items: center; gap: 0.75rem; }
+.dept-icon { font-size: 1.4rem; }
+.dept-name { font-weight: 850; font-size: 1.05rem; color: #0f172a; }
+
+/* Complaint count pill — single solid color */
+.complaint-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #312e81;
+  color: white;
+  border-radius: 999px;
+  padding: 0.3rem 1rem;
+  font-size: 1rem;
+  font-weight: 900;
+  font-family: Arial, sans-serif;
+}

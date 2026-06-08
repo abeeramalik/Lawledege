@@ -1,0 +1,20 @@
+.tooltip-wrap { position: relative; display: inline-flex; align-items: center; }
+.tooltip-box {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%; transform: translateX(-50%);
+  background: var(--text-primary);
+  color: white;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  box-shadow: var(--shadow-md);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .2s, transform .2s var(--ease);
+  transform: translateX(-50%) translateY(4px);
+  z-index: 200;
+}
+.tooltip-wrap:hover .tooltip-box { opacity: 1; transform: translateX(-50%) translateY(0); }

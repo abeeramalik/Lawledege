@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap');
+@import "tailwindcss";
+/* =========================
+   BASE RESET
+========================= */
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* REMOVE DEFAULT LINK STYLING */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================
+   THEME VARIABLES (DEFAULT = LIGHT)
+========================= */
+
+:root {
+  --bg: #F5F0EA;
+  --text: #3D2314;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --muted: #64748b;
+  --primary: #3D2314;
+  --primary-light: #F5F0EA;
+  --accent: #D97706;
+  --green: #00c851;
+  --red: #ff1744;
+  --blue: #00bcd4;
+  --gold: #ffd700;
+  --shadow: 0 2px 16px rgba(61,35,20,0.08);
+  --shadow-lg: 0 8px 40px rgba(61,35,20,0.18);
+  --rainbow-h: linear-gradient(90deg, #ff0080, #ff8c00, #ffd700, #00c851, #00bcd4, #7b2ff7);
+}
+
+/* DARK MODE */
+[data-theme="dark"] {
+  --bg: #0b1220;
+  --text: #e2e8f0;
+  --card: #111827;
+  --border: #1f2937;
+  --muted: #94a3b8;
+  --primary: #a855f7;
+}
+
+/* =========================
+   GLOBAL BODY (ONLY ONCE)
+========================= */
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+
+  background: var(--bg);
+  color: var(--text);
+
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* =========================
+   SHARED UI COMPONENTS
+========================= */
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  transition: background 0.25s ease, border 0.25s ease;
+}
+
+/* OPTIONAL: nicer scroll */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 8px;
+}
+
+/* =========================
+   LAWLEDGE SHARED ACTION BUTTONS + LOGIN FIXES
+========================= */
+@keyframes rainbow-anim {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.btn-rainbow {
+  display: block;
+  width: 100%;
+  background: linear-gradient(135deg, #D97706, #b45309);
+  background-size: 200% auto;
+  color: #fff !important;
+  border: none;
+  border-radius: 16px;
+  padding: 15px 28px;
+  font-weight: 800;
+  font-size: 17px;
+  cursor: pointer;
+  /* no rainbow animation */;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+.btn-rainbow:hover {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 8px 26px rgba(217,119,6,0.35);
+}
+.btn-rainbow:active { transform: scale(0.98); }
+.btn-rainbow:disabled { cursor: not-allowed; transform: none; box-shadow: none; }
+
+.btn-outline {
+  display: block;
+  width: 100%;
+  background: #fff;
+  border: 2px solid #3D2314;
+  color: #3D2314 !important;
+  border-radius: 16px;
+  padding: 13px 22px;
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+.btn-outline:hover { background: #F5F0EA; transform: translateY(-1px); }
+
+.login-password-input::-ms-reveal,
+.login-password-input::-ms-clear {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.login-password-input::-webkit-credentials-auto-fill-button,
+.login-password-input::-webkit-contacts-auto-fill-button,
+.login-password-input::-webkit-caps-lock-indicator,
+.login-password-input::-webkit-textfield-decoration-container {
+  visibility: hidden !important;
+  pointer-events: none !important;
+  display: none !important;
+}
+
+.lawledge-login-page,
+.lawledge-login-page input,
+.lawledge-login-page button,
+.lawledge-login-page p,
+.lawledge-login-page label,
+.lawledge-login-page div {
+  font-family: 'Poppins', system-ui, sans-serif;
+}

@@ -1,0 +1,29 @@
+/* Header is replaced by sidebar nav; keeping file for compatibility */
+.header {
+  background: rgba(255,255,255,0.88);
+  border-bottom: 1.5px solid var(--border);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(14px);
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 1.6rem;
+  background: linear-gradient(135deg, #3D2314, #704214);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.header-nav a {
+  color: var(--text-secondary);
+  margin-left: 1.5rem;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  transition: all .2s var(--ease);
+}
+.header-nav a:hover { background: rgba(217,119,6,0.1); color: #3D2314; }
